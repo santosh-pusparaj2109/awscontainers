@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-sample-linux-deployment
+  labels:
+    app: eks-sample-linux-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eks-sample-linux-app
+  template:
+    metadata:
+      labels:
+        app: eks-sample-linux-app
+    spec:
+      containers:
+        - name: nginx
+          image: public.ecr.aws/h6k6o0d5/containerproject
+          ports:
+            - name: http
+              containerPort: 80
